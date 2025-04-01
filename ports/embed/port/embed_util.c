@@ -99,7 +99,7 @@ void nlr_jump_fail(void *val) {
     }
 }
 
-#ifndef NDEBUG
+#if !defined(NDEBUG) && !defined(ESP32_NO_ASSERT_FUNC)
 // Used when debugging is enabled.
 void __assert_func(const char *file, int line, const char *func, const char *expr) {
     for (;;) {
