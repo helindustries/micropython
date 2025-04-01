@@ -52,10 +52,10 @@ LDFLAGS_USERMOD :=
 # added to SRC_USERMOD_C below
 SRC_USERMOD :=
 
-$(foreach module, $(wildcard $(USER_C_MODULES)/*/micropython.mk), \
-    $(eval USERMOD_DIR = $(patsubst %/,%,$(dir $(module))))\
-    $(info Including User C Module from $(USERMOD_DIR))\
-	$(eval include $(module))\
+$(foreach module,$(USER_C_MODULES),\
+	$(eval USERMOD_DIR = $(module))\
+	$(info Including User C Module from $(USERMOD_DIR))\
+	$(eval include $(USERMOD_DIR)/micropython.mk)\
 )
 
 SRC_USERMOD_C += $(SRC_USERMOD)
